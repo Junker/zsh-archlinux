@@ -3,27 +3,29 @@
 #######################################
 
 # Pacman - https://wiki.archlinux.org/index.php/Pacman_Tips
-alias pacupg='sudo pacman -Syu'
-alias pacin='sudo pacman -S'
-alias paclean='sudo pacman -Sc'
-alias pacins='sudo pacman -U'
-alias paclr='sudo pacman -Scc'
-alias pacre='sudo pacman -R'
-alias pacrem='sudo pacman -Rns'
-alias pacrep='pacman -Si'
-alias pacreps='pacman -Ss'
-alias pacloc='pacman -Qi'
-alias paclocs='pacman -Qs'
-alias pacinsd='sudo pacman -S --asdeps'
-alias pacmir='sudo pacman -Syy'
-alias paclsorphans='sudo pacman -Qdt'
-alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)'
-alias pacfileupg='sudo pacman -Fy'
-alias pacfiles='pacman -F'
-alias pacls='pacman -Ql'
-alias pacown='pacman -Qo'
-alias pacupd="sudo pacman -Sy"
-alias upgrade='sudo pacman -Syu'
+if (( $+commands[pacman] )); then
+  alias pacupg='sudo pacman -Syu'
+  alias pacin='sudo pacman -S'
+  alias paclean='sudo pacman -Sc'
+  alias pacins='sudo pacman -U'
+  alias paclr='sudo pacman -Scc'
+  alias pacre='sudo pacman -R'
+  alias pacrem='sudo pacman -Rns'
+  alias pacrep='pacman -Si'
+  alias pacreps='pacman -Ss'
+  alias pacloc='pacman -Qi'
+  alias paclocs='pacman -Qs'
+  alias pacinsd='sudo pacman -S --asdeps'
+  alias pacmir='sudo pacman -Syy'
+  alias paclsorphans='sudo pacman -Qdt'
+  alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)'
+  alias pacfileupg='sudo pacman -Fy'
+  alias pacfiles='pacman -F'
+  alias pacls='pacman -Ql'
+  alias pacown='pacman -Qo'
+  alias pacupd="sudo pacman -Sy"
+  alias upgrade='sudo pacman -Syu'
+fi
 
 function paclist() {
   # Based on https://bbs.archlinux.org/viewtopic.php?id=93683
