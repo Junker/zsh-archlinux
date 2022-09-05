@@ -25,43 +25,44 @@ if (( $+commands[pacman] )); then
   alias pacown='pacman -Qo'
   alias pacupd="sudo pacman -Sy"
   alias upgrade='sudo pacman -Syu'
+
+  function paclist() {
+    # Based on https://bbs.archlinux.org/viewtopic.php?id=93683
+    pacman -Qqe | \
+      xargs -I '{}' \
+        expac "${bold_color}% 20n ${fg_no_bold[white]}%d${reset_color}" '{}'
+  }
+
+  function pacdisowned() {
+    local tmp db fs
+    tmp=${TMPDIR-/tmp}/pacman-disowned-$UID-$$
+    db=$tmp/db
+    fs=$tmp/fs
+
+    mkdir "$tmp"
+    trap 'rm -rf "$tmp"' EXIT
+
+    pacman -Qlq | sort -u > "$db"
+
+    find /bin /etc /lib /sbin /usr ! -name lost+found \
+      \( -type d -printf '%p/\n' -o -print \) | sort > "$fs"
+
+    comm -23 "$fs" "$db"
+  }
+
+  alias pacmanallkeys='sudo pacman-key --refresh-keys'
+
+  function pacmansignkeys() {
+    local key
+    for key in $@; do
+      sudo pacman-key --recv-keys $key
+      sudo pacman-key --lsign-key $key
+      printf 'trust\n3\n' | sudo gpg --homedir /etc/pacman.d/gnupg \
+        --no-permission-warning --command-fd 0 --edit-key $key
+    done
+  }
+
 fi
-
-function paclist() {
-  # Based on https://bbs.archlinux.org/viewtopic.php?id=93683
-  pacman -Qqe | \
-    xargs -I '{}' \
-      expac "${bold_color}% 20n ${fg_no_bold[white]}%d${reset_color}" '{}'
-}
-
-function pacdisowned() {
-  local tmp db fs
-  tmp=${TMPDIR-/tmp}/pacman-disowned-$UID-$$
-  db=$tmp/db
-  fs=$tmp/fs
-
-  mkdir "$tmp"
-  trap 'rm -rf "$tmp"' EXIT
-
-  pacman -Qlq | sort -u > "$db"
-
-  find /bin /etc /lib /sbin /usr ! -name lost+found \
-    \( -type d -printf '%p/\n' -o -print \) | sort > "$fs"
-
-  comm -23 "$fs" "$db"
-}
-
-alias pacmanallkeys='sudo pacman-key --refresh-keys'
-
-function pacmansignkeys() {
-  local key
-  for key in $@; do
-    sudo pacman-key --recv-keys $key
-    sudo pacman-key --lsign-key $key
-    printf 'trust\n3\n' | sudo gpg --homedir /etc/pacman.d/gnupg \
-      --no-permission-warning --command-fd 0 --edit-key $key
-  done
-}
 
 if (( $+commands[xdg-open] )); then
   function pacweb() {
