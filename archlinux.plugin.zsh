@@ -165,23 +165,23 @@ if (( $+commands[trizen] )); then
 fi
 
 if (( $+commands[paru] )); then
-  alias parclean='sudo paru -Sc'
-  alias parin='sudo paru -S'
-  alias parins='sudo paru -U'
-  alias parclr='sudo paru -Scc'
-  alias parre='sudo paru -R'
-  alias parrem='sudo paru -Rns'
+  alias parclean='paru -Sc'
+  alias parin='paru -S'
+  alias parins='paru -U'
+  alias parclr='paru -Scc'
+  alias parre='paru -R'
+  alias parrem='paru -Rns'
   alias parrep='paru -Si'
   alias parreps='paru -Ss'
   alias parloc='paru -Qi'
   alias parlocs='paru -Qs'
   alias parlst='paru -Qe'
-  alias parinsd='sudo paru -S --asdeps'
-  alias parmir='sudo paru -Syy'
+  alias parinsd='paru -S --asdeps'
+  alias parmir='paru -Syy'
   alias parown='paru -Qo'
-  alias parupd="sudo paru -Sy"
-  alias parupg='sudo paru -Syu'
-  alias upgrade='sudo paru -Syu'
+  alias parupd="paru -Sy"
+  alias parupg='paru -Syu'
+  alias upgrade='paru -Syu'
 fi
 
 if (( $+commands[yay] )); then
