@@ -7,15 +7,25 @@ Based on oh-my-zsh [archlinux plugin](https://github.com/ohmyzsh/ohmyzsh/blob/ma
 
 ### [Zgenom](https://github.com/jandamm/zgenom)
 
-Add `zgenom load Junker/zsh-archlinux` to your `.zshrc`.
+Add `zgenom load Junker/zsh-archlinux` to your `.zshrc` and run ```source ~/.zshrc```
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
-Add `antigen bundle Junker/zsh-archlinux@main` to your `.zshrc`
+Add `antigen bundle Junker/zsh-archlinux@main` to your `.zshrc` and run ```source ~/.zshrc```
 
 ### [Znap](https://github.com/marlonrichert/zsh-snap)
 
-Add `znap source Junker/zsh-archlinux` to your `.zshrc`
+Add `znap source Junker/zsh-archlinux` to your `.zshrc` and run ```source ~/.zshrc```
+
+### [Sheldon](https://github.com/rossmacarthur/sheldon)
+
+Run this in your terminal emulator:
+
+```zsh
+sheldon add --github 'Junker/zsh-archlinux'
+sheldon lock
+sheldon source
+```
 
 ### Without using a framework
 
@@ -29,6 +39,7 @@ Add `znap source Junker/zsh-archlinux` to your `.zshrc`
 | Alias        | Command                                | Description                                                      |
 |--------------|----------------------------------------|------------------------------------------------------------------|
 | pacin        | `sudo pacman -S`                       | Install packages from the repositories                           |
+| pacndeps     | `sudo pacman -Sdd`                     | Install a package or packages without dependencies               |
 | pacins       | `sudo pacman -U`                       | Install a package from a local file                              |
 | pacinsd      | `sudo pacman -S --asdeps`              | Install packages as dependencies of another package              |
 | paclean      | `sudo pacman -Sc`                      | Clean out old and unused caches and packages                     |
@@ -190,11 +201,22 @@ upgrades were available. Use `pacman -Que` instead.
 | yasu    | `yay -Syu --no-confirm`        | Same as `yaupg`, but without confirmation                         |
 | upgrade[¹](#f1) | `yay -Syu`             | Sync with repositories before upgrading packages                  |
 
+#### Rua (ONLY WORKS WITH AUR)
+| Alias   | Command                        |                                                                   |
+|---------|--------------------------------|-------------------------------------------------------------------|
+| ruin    | `rua install`                  | Installs a package or packages                                    |
+| ruse    | `rua search`                   | Searches the aur for packages                                     |
+| ruup    | `rua upgrade`                  | Upgrades all installed AUR packages                               |
+| rush    | `rua shellcheck`               | Runs shellcheck on a PKGBUILD, essentially debugging it           |
+| rutar   | `rua tarcheck`                 | Runs rua checks on a prebuilt pkg tarball                         |
+| rube    | `rua builddir`                 | Build a package from a directory and subdirectories               |
+| rubeoff | `rua builddir --offline`       | Same as `rube`, but builds in offline mode                        |
+
 ---
 
 <span id="f1">¹</span>
-The `upgrade` alias is set for all package managers. Its value will depend on
-whether the package manager is installed, checked in the following order:
+The `upgrade` alias is set for all package managers that act as a pacman wrapper.
+Its value will depend on whether the package manager is installed, checked in the following order:
 
 1. `yay`
 2. `paru`
