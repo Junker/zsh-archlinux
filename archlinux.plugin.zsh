@@ -207,3 +207,13 @@ if (( $+commands[yay] )); then
   alias yaupd="yay -Sy"
   alias upgrade='yay -Syu'
 fi
+
+if (( $+commands[rua] )); then
+  alias ruin='rua install'
+  alias ruse='rua search'
+  alias ruup='rua upgrade'
+  alias rush='rua shellcheck'
+  alias rutar='rua tarcheck'
+  alias rube='rua builddir'
+  alias rubeoff='rua builddir --offline'
+fi
