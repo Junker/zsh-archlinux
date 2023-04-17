@@ -6,6 +6,7 @@
 if (( $+commands[pacman] )); then
   alias pacupg='sudo pacman -Syu'
   alias pacin='sudo pacman -S'
+  alias pacndeps='sudo pacman -Sdd'
   alias paclean='sudo pacman -Sc'
   alias pacins='sudo pacman -U'
   alias paclr='sudo pacman -Scc'
@@ -22,6 +23,7 @@ if (( $+commands[pacman] )); then
   alias pacfileupg='sudo pacman -Fy'
   alias pacfiles='pacman -F'
   alias pacls='pacman -Ql'
+  alias paclsreps='pacman -Ss'
   alias pacown='pacman -Qo'
   alias pacupd="sudo pacman -Sy"
   alias upgrade='sudo pacman -Syu'
