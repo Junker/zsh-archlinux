@@ -201,21 +201,21 @@ upgrades were available. Use `pacman -Que` instead.
 | yasu    | `yay -Syu --no-confirm`        | Same as `yaupg`, but without confirmation                         |
 | upgrade[¹](#f1) | `yay -Syu`             | Sync with repositories before upgrading packages                  |
 
-#### Rua (ONLY WORKS WITH AUR)
+#### Rua (ONLY WORKS WITH AUR PACKAGES)
 | Alias   | Command                        |                                                                   |
 |---------|--------------------------------|-------------------------------------------------------------------|
 | ruin    | `rua install`                  | Installs a package or packages                                    |
 | ruse    | `rua search`                   | Searches the aur for packages                                     |
-| ruup    | `rua upgrade`                  | Upgrades all installed AUR packages                               |
 | rush    | `rua shellcheck`               | Runs shellcheck on a PKGBUILD, essentially debugging it           |
 | rutar   | `rua tarcheck`                 | Runs rua checks on a prebuilt pkg tarball                         |
 | rube    | `rua builddir`                 | Build a package from a directory and subdirectories               |
 | rubeoff | `rua builddir --offline`       | Same as `rube`, but builds in offline mode                        |
+| upgrade[¹](#f1)    | `rua upgrade`                  | Upgrades all installed AUR packages                               |
 
 ---
 
 <span id="f1">¹</span>
-The `upgrade` alias is set for all package managers that act as a pacman wrapper.
+The `upgrade` alias is set for all package managers.
 Its value will depend on whether the package manager is installed, checked in the following order:
 
 1. `yay`
@@ -224,6 +224,7 @@ Its value will depend on whether the package manager is installed, checked in th
 4. `pacaur`
 5. `aura`
 6. `pacman`
+7. `aura`
 
 ## Contributors
 
