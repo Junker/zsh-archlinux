@@ -22,7 +22,7 @@ Add `znap source Junker/zsh-archlinux` to your `.zshrc` and run ```source ~/.zsh
 Run this in your terminal emulator:
 
 ```zsh
-sheldon add --github 'Junker/zsh-archlinux'
+sheldon add --github 'Junker/zsh-archlinux' zsh-arch
 sheldon lock
 sheldon source
 ```
